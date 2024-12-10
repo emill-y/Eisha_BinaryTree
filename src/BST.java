@@ -142,19 +142,22 @@ public class BST {
     }
 
     public void insert(int val, BSTNode node){
-        if (node.getRight() == null && node.getVal() > val) {
-            node.setRight(new BSTNode(val));
-        }
-        if (node.getLeft() == null && node.getVal() < val) {
-            node.setLeft(new BSTNode(val));
-        }
-        else if (node.getVal() > val){
+        if (node.getVal() < val){
+            if (node.getRight() == null) {
+                node.setRight(new BSTNode(val));
+            }
+            System.out.println(node.getRight().getVal() + "-" + val + "continue right");
+
             insert(val, node.getRight());
         }
-        else if(node.getVal() < val){
+
+        if(node.getVal() > val){
+            if (node.getLeft() == null) {
+                node.setLeft(new BSTNode(val));
+            }
+            System.out.println(node.getLeft().getVal() + "-" + val + "continue left");
             insert(val, node.getLeft());
         }
-
     }
 
     /**
