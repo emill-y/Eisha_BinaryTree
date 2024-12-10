@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 /**
  * An Integer Binary Search Tree
- * @author: Your Name Here
- * @version: Date
+ * @author: Eisha Yadav
+ * @version: 12/10/24
  */
 
 public class BST {
@@ -46,18 +46,20 @@ public class BST {
      * @param val integer value to search for
      * @return true if val is in the tree, false otherwise
      */
+    //Search function
     public boolean search(int val) {
         // TODO: Complete the search function
-        //Use Helper Function
+        //Use Helper Function that accepts the initial root as a parameter, allowing for recursion
         return search(val, getRoot());
 
     }
-
+    //Search Helper Function, accepting more parameters
     public boolean search(int val, BSTNode node){
         //Base Case: If val, return true
         if (node.getVal() == val) {
             return true;
         }
+        //Base case: If value is null, return false (reached end of tree- value was not found)
         if (node.getLeft() == null || node.getRight() == null) {
             return false;
         }
@@ -68,14 +70,16 @@ public class BST {
     /**
      * @return ArrayList of BSTNodes in inorder
      */
+    //Inorder traversal of tree, in order of left, root, right
     public ArrayList<BSTNode> getInorder() {
         // TODO: Complete inorder traversal
         //Returns nodes in order of left, root, right
         //Create New Arraylist
         ArrayList<BSTNode> inOrder = new ArrayList<BSTNode>();
+        //Call helper function
         return getInorder(getRoot(), inOrder);
     }
-
+    //
     public ArrayList<BSTNode> getInorder(BSTNode node, ArrayList<BSTNode> inOrder){
         if(node == null) {
             return inOrder;
