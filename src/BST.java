@@ -102,8 +102,8 @@ public class BST {
             return preOrder;
         }
         preOrder.add(node);
-        getInorder(node.getLeft(), preOrder);
-        getInorder(node.getRight(), preOrder);
+        getPreorder(node.getLeft(), preOrder);
+        getPreorder(node.getRight(), preOrder);
         return preOrder;
     }
 
@@ -122,8 +122,8 @@ public class BST {
         if(node == null) {
             return postOrder;
         }
-        getInorder(node.getLeft(), postOrder);
-        getInorder(node.getRight(), postOrder);
+        getPostorder(node.getLeft(), postOrder);
+        getPostorder(node.getRight(), postOrder);
         postOrder.add(node);
         return postOrder;
     }
@@ -146,8 +146,6 @@ public class BST {
             if (node.getRight() == null) {
                 node.setRight(new BSTNode(val));
             }
-            System.out.println(node.getRight().getVal() + "-" + val + "continue right");
-
             insert(val, node.getRight());
         }
 
@@ -155,7 +153,6 @@ public class BST {
             if (node.getLeft() == null) {
                 node.setLeft(new BSTNode(val));
             }
-            System.out.println(node.getLeft().getVal() + "-" + val + "continue left");
             insert(val, node.getLeft());
         }
     }
