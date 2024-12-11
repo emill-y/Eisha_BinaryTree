@@ -79,8 +79,9 @@ public class BST {
         //Call helper function
         return getInorder(getRoot(), inOrder);
     }
-    //
+    //Inorder Traversal Helper Function
     public ArrayList<BSTNode> getInorder(BSTNode node, ArrayList<BSTNode> inOrder){
+        //Returns when node is null
         if(node == null) {
             return inOrder;
         }
@@ -93,6 +94,7 @@ public class BST {
     /**
      * @return ArrayList of BSTNodes in preorder
      */
+    //Preorder Traversal of Tree
     public ArrayList<BSTNode> getPreorder() {
         // TODO: Complete preorder traversal
         //Returns nodes in order of root, left, right
@@ -100,7 +102,7 @@ public class BST {
         ArrayList<BSTNode> preOrder = new ArrayList<BSTNode>();
         return getPreorder(getRoot(), preOrder);
     }
-
+    //Helper Function for Preorder Traversal
     public ArrayList<BSTNode> getPreorder(BSTNode node, ArrayList<BSTNode> preOrder){
         if(node == null) {
             return preOrder;
@@ -114,6 +116,7 @@ public class BST {
     /**
      * @return ArrayList of BSTNodes in postorder
      */
+    //Postorder Traversal
     public ArrayList<BSTNode> getPostorder() {
         // TODO: Complete postorder traversal
         //Returns nodes in order of left, right, root
@@ -121,7 +124,7 @@ public class BST {
         ArrayList<BSTNode> postOrder = new ArrayList<BSTNode>();
         return getPostorder(getRoot(), postOrder);
     }
-
+    //Helper Function for Postorder Traversal
     public ArrayList<BSTNode> getPostorder(BSTNode node, ArrayList<BSTNode> postOrder){
         if(node == null) {
             return postOrder;
@@ -138,25 +141,31 @@ public class BST {
      * root instance variable to be the root of the new modified tree.
      * @param val The value ot insert
      */
+    //Inserts value into Tree
     public void insert(int val) {
         // TODO: Complete insert
         if (!search(val)) {
             insert(val, getRoot());
         }
     }
-
+    //Helper Function for Insert
     public void insert(int val, BSTNode node){
+        //Insert value to the right if value is greater than value of the node
         if (node.getVal() < val){
+            //Insert if there is no value at the node
             if (node.getRight() == null) {
                 node.setRight(new BSTNode(val));
             }
+            //Recurse if node has a value until null node is found
             insert(val, node.getRight());
         }
-
+        //Insert value to the left if value is less than the value of the node
         if(node.getVal() > val){
+            //Insert at node if node is null
             if (node.getLeft() == null) {
                 node.setLeft(new BSTNode(val));
             }
+            //Recurse if node has a value until null node is found
             insert(val, node.getLeft());
         }
     }
