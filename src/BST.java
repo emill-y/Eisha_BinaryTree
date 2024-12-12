@@ -177,7 +177,21 @@ public class BST {
      */
     public boolean isValidBST() {
         // TODO: Optional Challenge!
-        return false;
+        //Call Helper Function
+        return isValidBST(getRoot());
+
+    }
+
+    public boolean isValidBST(BSTNode node) {
+        if(node.getRight() == null || node.getLeft() == null || node == null){
+            return true;
+        }
+        if (node.getRight().getVal() < node.getVal() || node.getLeft().getVal() > node.getVal()){
+            return false;
+        }
+
+        return isValidBST(node.getLeft()) && isValidBST(node.getRight());
+
     }
 
     public static void main(String[] args) {
